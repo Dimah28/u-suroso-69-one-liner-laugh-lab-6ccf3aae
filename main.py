@@ -41,6 +41,8 @@ def validate(joke: str) -> None:
     instead of writing an entry the gate would refuse."""
     if not 1 <= len(joke) <= 200:
         raise SystemExit(f"joke is {len(joke)} characters, must be 1-200")
+    if "\n" in joke or "\r" in joke:
+        raise SystemExit("joke must be a single line, no line breaks")
     if not any(not ch.isspace() for ch in joke):
         raise SystemExit("joke must contain a non-whitespace character")
 
